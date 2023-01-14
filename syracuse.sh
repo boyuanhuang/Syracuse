@@ -19,7 +19,7 @@ done
 
 GPI="plot.gpi"
 echo "set title 'test'" >> $GPI
-echo "set key off" >> $GPI
+#echo "set key off" >> $GPI
 echo "plot \\" >> $GPI
 COUNT=1
 for FILE in *.dat; do
@@ -33,7 +33,7 @@ for FILE in *.dat; do
   then
     echo "'$FILE' using 1:2 title '`basename vol.dat`' w l linecolor 1" >> $GPI
   else
-    echo "'$FILE' using 1:2 w l linecolor 1,\\" >> $GPI
+    echo "'$FILE' using 1:2 title '' w l linecolor 1,\\" >> $GPI
   fi
 done
 
@@ -46,7 +46,7 @@ echo >> $GPI
 
 cat $GPI
 gnuplot -persist $GPI
-rm $GPI
+#rm $GPI
 
 
 # Plot 2 : la courbe pour l’altitude maximum
