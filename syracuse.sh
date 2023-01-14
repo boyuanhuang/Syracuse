@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Install gnuplot
-brew install gnuplot
+# Install gnuplot on MacOs, run : brew install gnuplot
+# Install gnuplot on Windows, just google or see http://spiff.rit.edu/classes/ast601/gnuplot/install_windows.html
 
 # todo Gestion de input qvec erreur
 echo "min: $1";
@@ -20,7 +20,6 @@ done
 GPI="plot.gpi"
 echo "set title 'test'" >> $GPI
 echo "set key off" >> $GPI
-echo "set output 'plot.jpeg'" >> $GPI  # https://gnuplot.sourceforge.net/docs_4.2/node392.html
 echo "plot \\" >> $GPI
 COUNT=1
 for FILE in *.dat; do
@@ -39,6 +38,10 @@ for FILE in *.dat; do
 done
 
 sed -i '$s/,\\$//' $GPI
+echo "set term jpeg" >> $GPI
+echo "set output 'plot.jpeg'" >> $GPI  # https://gnuplot.sourceforge.net/docs_4.2/node392.html
+echo "replot" >> $GPI
+echo "set term x11" >> $GPI
 echo >> $GPI
 
 cat $GPI
