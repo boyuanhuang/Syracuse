@@ -1,0 +1,12 @@
+set title 'test'
+plot \
+'f100.dat' using 1:2 title '' w l linecolor 1,\
+'f101.dat' using 1:2 title '' w l linecolor 1,\
+'f102.dat' using 1:2 title '' w l linecolor 1,\
+'f103.dat' using 1:2 title '' w l linecolor 1,\
+'f104.dat' using 1:2 title 'vol.dat' w l linecolor 1
+set term jpeg
+set output 'plot.jpeg'
+replot
+set term x11
+
